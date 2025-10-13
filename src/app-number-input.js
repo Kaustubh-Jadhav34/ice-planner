@@ -2,14 +2,7 @@ import { LitElement, html, css } from 'lit';
 
 export class AppNumberInput extends LitElement {
   static get properties() {
-    return {
-      label: { type: String },
-      value: { type: Number },
-      min:   { type: Number },
-      max:   { type: Number },
-      step:  { type: Number },
-      suffix:{ type: String },
-    };
+    return { label:{type:String}, value:{type:Number}, min:{type:Number}, max:{type:Number}, step:{type:Number}, suffix:{type:String} };
   }
 
   constructor() {
@@ -26,10 +19,7 @@ export class AppNumberInput extends LitElement {
     return css`
       :host { display: block; }
       .field { display: grid; gap: 6px; }
-      label {
-        font: 600 0.95rem/1.2 system-ui, Arial, sans-serif;
-        color: var(--ddd-theme-default-wonderPurple, #5632e6);
-      }
+      label { font: 600 0.95rem/1.2 system-ui, Arial, sans-serif; color: var(--ddd-theme-default-wonderPurple, #5632e6); }
       .wrap {
         display: flex; align-items: center; gap: 8px;
         background: var(--app-input-bg, #fff);

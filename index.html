@@ -2,28 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Ice Planner — DDD + HAX</title>
+    <title>Ice Planner </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="importmap">
       { "imports": { "lit": "https://cdn.jsdelivr.net/npm/lit@3/+esm" } }
     </script>
     <script type="module" src="./src/app-number-input.js"></script>
-    <script type="module" src="./src/ice-planner.js"></script>
+    <script type="module" src="./src/ice.planner.js"></script>
     <style>
       :root { color-scheme: light dark; }
-      body { margin: 0; font-family: system-ui, Arial, sans-serif; background: #f3f6fb; padding: 24px; }
-      @media (prefers-color-scheme: dark) { body { background: #0a1020; } }
-      main { max-width: 980px; margin: 0 auto; display: grid; gap: 20px; }
-      h1 { margin: 0; color: var(--ddd-theme-default-wonderPurple, #5632e6); }
-      .help { color: #475569; font-size: 0.95rem; }
-      @media (prefers-color-scheme: dark) { .help { color: #93a3b8; } }
+      body {
+        margin: 0;
+        font-family: system-ui, Arial, sans-serif;
+        background:
+          radial-gradient(1200px 500px at 10% -20%, #dbeafe 0, transparent 60%),
+          radial-gradient(1000px 450px at 100% 0%, #fee2e2 0, transparent 60%),
+          #0b1020;
+        min-height: 100vh;
+        padding: 28px 18px;
+      }
+      @media (prefers-color-scheme: light) {
+        body { background:
+          radial-gradient(1200px 500px at 10% -20%, #eef2ff 0, transparent 60%),
+          radial-gradient(1000px 450px at 100% 0%, #fef9c3 0, transparent 60%),
+          #f6f7fb;
+        }
+      }
+      main { max-width: 1024px; margin: 0 auto; display: grid; gap: 18px; }
+      header.page {
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      }
+      .brand {
+        display: flex; align-items: baseline; gap: 10px;
+      }
+      .brand h1 {
+        margin: 0;
+        font: 800 1.6rem/1.1 system-ui, Arial, sans-serif;
+        color: var(--ddd-theme-default-wonderPurple, #5632e6);
+      }
+      .brand span {
+        color: #60a5fa; font-weight: 600; letter-spacing: .2px;
+      }
+      .bar {
+        height: 2px;
+        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+        border-radius: 2px;
+        opacity: .6;
+      }
+      .note {
+        color: #9fb0c6; font-size: .95rem; margin: 4px 0 0;
+      }
+      @media (prefers-color-scheme: light) { .note { color: #495569; } }
+      section.app { display: grid; gap: 14px; }
     </style>
   </head>
   <body>
     <main>
-      <h1>Ice Planner — DDD + HAX</h1>
-      <p class="help">Adjust costs and players; totals update automatically. Click “Copy sharable URL.”</p>
-      <ice-planner></ice-planner>
+      <header class="page">
+        <div class="brand">
+          <h1>Ice Planner</h1>
+          <span></span>
+        </div>
+      </header>
+      <div class="bar"></div>
+      <p class="note">Update team and costs, totals and per‑player update instantly. Use “Copy sharable URL” to share the exact worksheet.</p>
+      <section class="app">
+        <ice-planner></ice-planner>
+      </section>
     </main>
   </body>
 </html>

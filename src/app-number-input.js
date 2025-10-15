@@ -7,32 +7,34 @@ export class AppNumberInput extends LitElement {
 
   constructor() {
     super();
-    this.label = '';
-    this.value = 0;
-    this.min = 0;
-    this.max = 1_000_000;
-    this.step = 1;
-    this.suffix = '';
+    this.label=''; this.value=0; this.min=0; this.max=1_000_000; this.step=1; this.suffix='';
   }
 
   static get styles() {
     return css`
-      :host { display: block; }
-      .field { display: grid; gap: 6px; }
-      label { font: 600 0.95rem/1.2 system-ui, Arial, sans-serif; color: var(--ddd-theme-default-wonderPurple, #5632e6); }
+      :host { display:block; }
+      .field { display:grid; gap:6px; }
+      label {
+        font: 600 .95rem/1.2 system-ui, Arial, sans-serif;
+        color: var(--ddd-theme-default-wonderPurple, #5632e6);
+      }
       .wrap {
-        display: flex; align-items: center; gap: 8px;
-        background: var(--app-input-bg, #fff);
-        border: 1px solid var(--app-input-border, #cbd5e1);
-        border-radius: 10px; padding: 8px 12px;
+        display:flex; align-items:center; gap:8px;
+        background: var(--app-input-bg, #0e1529);
+        border: 1px solid var(--app-input-border, #263449);
+        border-radius: 12px; padding: 10px 12px;
+        transition: border-color .15s ease;
       }
       input[type="number"] {
-        width: 100%; border: none; outline: none; font-size: 1rem; background: transparent;
-        color: var(--app-input-fg, #0b1c5b);
+        width:100%; border:none; outline:none; font-size:1rem; background:transparent;
+        color: var(--app-input-fg, #dbeafe);
       }
-      .suffix { color: #475569; font-size: 0.9rem; }
-      @media (prefers-color-scheme: dark) {
-        :host { --app-input-bg: #0b1220; --app-input-border: #263449; --app-input-fg: #dbeafe; }
+      .wrap:focus-within { border-color: #60a5fa; }
+      .suffix { color:#93a3b8; font-size:.9rem; }
+      @media (prefers-color-scheme: light) {
+        .wrap{ background:#fff; border-color:#cbd5e1; }
+        input[type="number"]{ color:#0b1c5b; }
+        .suffix{ color:#475569; }
       }
     `;
   }
@@ -48,8 +50,7 @@ export class AppNumberInput extends LitElement {
       <div class="field">
         ${this.label ? html`<label>${this.label}</label>` : html``}
         <div class="wrap">
-          <input
-            type="number"
+          <input type="number"
             .value=${String(this.value)}
             min=${this.min}
             max=${this.max}

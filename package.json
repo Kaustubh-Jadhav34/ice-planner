@@ -1,0 +1,13 @@
+{
+  "name": "ice-planner",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ice planner app (Lit + DDD)",
+  "devDependencies": {
+    "serve": "^14.2.5"
+  },
+  "scripts": {
+    "start": "serve -l 5500 .",
+    "build": "echo \"No build step needed for pure ESM\""
+  }
+}
